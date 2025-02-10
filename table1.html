@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Character Counter</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        textarea {
+            width: 100%;
+            height: 100px;
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .counter {
+            margin-top: 5px;
+            font-size: 14px;
+        }
+        .warning {
+            color: red;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+    <h2>Type your message</h2>
+    <textarea id="message" maxlength="200" placeholder="Type here..."></textarea>
+    <div class="counter" id="counter">0/200 characters</div>
+    <div class="warning" id="warning" style="display: none;">Character limit reached!</div>
+
+    <script>
+        const textarea = document.getElementById("message");
+        const counter = document.getElementById("counter");
+        const warning = document.getElementById("warning");
+        const maxLength = 200;
+
+        textarea.addEventListener("input", function () {
+            let textLength = textarea.value.length;
+            counter.textContent = `${textLength}/${maxLength} characters`;
+
+            if (textLength >= maxLength) {
+                warning.style.display = "block";
+            } else {
+                warning.style.display = "none";
+            }
+        });
+    </script>
+</body>
+</html>
